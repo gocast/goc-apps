@@ -7,31 +7,55 @@
     <title>goc-apps demo</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../goc-apps-data.html">
     <link rel="import" href="../goc-app-icon.html">
 
     <style is="custom-style">
       body {
-        text-align: center;
+        color: #333;
+        font-family: sans-serif;
+        font-size: 15px;
+      }
+
+      .app-row {
+        margin: 30px;
       }
 
       goc-app-icon {
-        margin: 20px 10px;
+        margin-bottom: 6px;
+        margin-right: 10px;
       }
     </style>
   </head>
   <body>
-    <div>
-      <goc-app-icon app-name="image"></goc-app-icon>
-      <goc-app-icon app-name="news-marquee"></goc-app-icon>
-      <goc-app-icon app-name="photos"></goc-app-icon>
-      <goc-app-icon app-name="date-and-time"></goc-app-icon>      
-    </div>
-    <br>
-    <div>
-      <goc-app-icon size="small" app-name="image"></goc-app-icon>
-      <goc-app-icon size="small" app-name="news-marquee"></goc-app-icon>
-      <goc-app-icon size="small" app-name="photos"></goc-app-icon>
-      <goc-app-icon size="small" app-name="date-and-time"></goc-app-icon>      
-    </div>
+
+    <goc-apps-data></goc-apps-data>
+
+    <script>
+      window.onload = _ => {
+        const gocAppsData = document.querySelector('goc-apps-data');
+
+        gocAppsData.apps.forEach(app => {
+          const container = document.createElement('div');
+          container.classList.add('app-row');
+
+          const icon = document.createElement('goc-app-icon');
+          icon.appName = app.appName;
+          
+          const smallIcon = document.createElement('goc-app-icon');
+          smallIcon.appName = app.appName;
+          smallIcon.size = 'small';
+
+          container.appendChild(icon);
+          container.appendChild(smallIcon);
+
+          const div = document.createElement('div');
+          div.innerHTML = app.displayName;
+          container.appendChild(div);
+
+          document.body.appendChild(container);
+        });
+      };
+    </script>
   </body>
 </html>
