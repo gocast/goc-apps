@@ -1,0 +1,76 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="goc-apps-iconset.html">
+<link rel="import" href="goc-apps-data.html">
+
+<!--
+`goc-apps`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="goc-app-icon">
+  <template>
+    <style>
+      :host {
+        background: #eee;
+        border-radius: 50%;
+        display: inline-block;
+        height: 52px;
+        min-width: 52px;
+        position: relative;
+        width: 52px;
+      }
+
+      iron-icon {
+        bottom: 0;
+        color: white;
+        height: 32px;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 32px;
+      }    
+    </style>
+
+    <goc-apps-data
+        app-name="[[appName]]"
+        item="{{_appDetail}}"></goc-apps-data>
+
+    <iron-icon icon="goc-app:[[appName]]"></iron-icon>
+
+  </template>
+  <script>
+
+    class GocAppIcon extends Polymer.Element {
+
+      static get is() {return 'goc-app-icon';}
+
+      static get config() {
+        return {
+          properties: {
+
+            appName: String,
+
+            _appDetail: {
+              type: Object,
+              observer: '_appDetailChanged'
+            }
+
+          }
+        };
+      }
+
+      _appDetailChanged(_appDetail) {
+        if (_appDetail) {
+          this.style.background = _appDetail.color;
+        }
+      }
+
+    }
+
+    customElements.define(GocAppIcon.is, GocAppIcon);
+  </script>
+</dom-module>

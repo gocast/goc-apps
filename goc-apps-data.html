@@ -1,0 +1,122 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<script>
+
+  const apps = [
+    {
+      "appName": "image",
+      "color": "#2196f3",// --paper-blue-500: #2196f3;
+      "defaultPlayerStyle": "position: absolute; height: 10%; width: 10%; right: 5%; top: 5%;"
+    },
+    {
+      "appName": "news-marquee",
+      "color": "#FF5722", // --paper-deep-orange-500
+      "defaultPlayerStyle": "position: absolute; height: 10%; width: 100%; bottom: 0; left: 0",
+    },
+    {
+      "appName": "photos",
+      "color": "#4CAF50", // --paper-green-500
+      "iconName": "album",
+      "defaultPlayerStyle": "position: absolute; height: 100%; width: 100%; left: 0; top: 0;",
+    },
+    {
+      "appName": "date-and-time",
+      "color": "#9C27B0", // --paper-purple-500
+      "defaultStyle": "position: absolute; height: 10%; width: 10%; right: 5%; top: 5%;"
+    }
+  ];
+
+  const translations = {
+    "en": {
+      "image": {
+        "displayName": "Image",
+        "description": "A single image. Useful for logos and background.",
+      },
+      "news-marquee": {
+        "displayName": "News marquee",
+        "description": "Display your latest news on a scrolling text."
+      },
+      "photos": {
+        "displayName": "Photos",
+        "description": "Create photo albums."
+      },
+      "date-and-time": {
+        "displayName": "Date & Time",
+        "description": "Simple clock analog or digital."
+      }
+    },
+    "es": {
+      "image": {
+        "displayName": "Imagen",
+        "description": "Muestra una sola imagen. Útil para logos y fondos.",
+      },
+      "news-marquee": {
+        "displayName": "Marquesina de noticias",
+        "description": "Muestra noticias en movimiento."
+      },
+      "photos": {
+        "displayName": "Fotos",
+        "description": "Crea bonitas animaciones con tus fotos."
+      },
+      "date-and-time": {
+        "displayName": "Fecha & Hora",
+        "description": "Muestra la fecha o la hora."
+      }
+    }
+  };
+
+  class GocAppsData extends Polymer.Element {
+
+    static get is() {return 'goc-apps-data';}
+
+    static get config() {
+      return {
+        properties: {
+
+          appName: String,
+
+          item: {
+            type: Object,
+            notify: true,
+            computed: '_computeItem(appName)'
+          },
+
+          apps: {
+            type: Array,
+            notify: true,
+            computed: '_computeApps(language)'
+          },
+
+          language: {
+            type: String,
+            value: _ => {
+              return 'en';
+            }
+          }
+
+        }
+      };
+    }
+
+    find(appName) {
+      return this.apps.find(app => {
+        return app.appName === appName;
+      });
+    }
+
+    _computeApps(language) {
+      return apps.map(app => {
+        const texts = translations[language] || translations.en;
+        return Object.assign(app, texts[app.appName]);
+      });
+    }
+
+    _computeItem(appName) {
+      return this.find(appName);
+    }
+
+  }
+
+  customElements.define(GocAppsData.is, GocAppsData);
+
+</script>
