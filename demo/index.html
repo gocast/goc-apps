@@ -7,7 +7,7 @@
     <title>goc-apps demo</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../goc-apps-data.html">
+    <link rel="import" href="../goc-apps-collection.html">
     <link rel="import" href="../goc-app-icon.html">
 
     <style is="custom-style">
@@ -29,13 +29,13 @@
   </head>
   <body>
 
-    <goc-apps-data></goc-apps-data>
+    <goc-apps-collection></goc-apps-collection>
 
     <script>
       window.onload = _ => {
-        const gocAppsData = document.querySelector('goc-apps-data');
+        const collection = document.querySelector('goc-apps-collection');
 
-        gocAppsData.apps.forEach(app => {
+        collection.apps.forEach(app => {
           const container = document.createElement('div');
           container.classList.add('app-row');
 
