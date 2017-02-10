@@ -27,7 +27,7 @@
       }
     ];
 
-    const translations = {
+    const appsInfo = {
       "en": {
         "image": {
           "displayName": "Image",
@@ -107,8 +107,8 @@
 
       _computeApps(language) {
         return apps.map(app => {
-          const texts = translations[language] || translations.en;
-          return Object.assign(app, texts[app.appName]);
+          const info = appsInfo[language] || appsInfo.en;
+          return Object.assign(app, info[app.appName]);
         });
       }
 
