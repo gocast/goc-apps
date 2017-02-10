@@ -10,12 +10,28 @@
     <link rel="import" href="../goc-app-icon.html">
 
     <style is="custom-style">
+      body {
+        text-align: center;
+      }
+
+      goc-app-icon {
+        margin: 20px 10px;
+      }
     </style>
   </head>
   <body>
-    <goc-app-icon app-name="image"></goc-app-icon>
-    <goc-app-icon app-name="news-marquee"></goc-app-icon>
-    <goc-app-icon app-name="photos"></goc-app-icon>
-    <goc-app-icon app-name="date-and-time"></goc-app-icon>
+    <div>
+      <goc-app-icon app-name="image"></goc-app-icon>
+      <goc-app-icon app-name="news-marquee"></goc-app-icon>
+      <goc-app-icon app-name="photos"></goc-app-icon>
+      <goc-app-icon app-name="date-and-time"></goc-app-icon>      
+    </div>
+    <br>
+    <div>
+      <goc-app-icon size="small" app-name="image"></goc-app-icon>
+      <goc-app-icon size="small" app-name="news-marquee"></goc-app-icon>
+      <goc-app-icon size="small" app-name="photos"></goc-app-icon>
+      <goc-app-icon size="small" app-name="date-and-time"></goc-app-icon>      
+    </div>
   </body>
 </html>

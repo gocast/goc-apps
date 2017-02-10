@@ -18,20 +18,32 @@
         display: inline-block;
         height: 52px;
         position: relative;
+        min-width: 52px;
         width: 52px;
       }
 
       iron-icon {
         bottom: 0;
         color: white;
-        height: 75%;
+        height: 34px;
         left: 0;
         margin: auto;
         position: absolute;
         right: 0;
         top: 0;
-        width: 75%;
-      }   
+        width: 34px;
+      }
+
+      :host([size="small"]) {
+        height: 40px;
+        min-width: 40px;
+        width: 40px;
+      }
+
+      :host([size="small"]) iron-icon {
+        height: 24px;
+        width: 24px;
+      }
     </style>
 
     <goc-apps-data
@@ -52,6 +64,11 @@
           properties: {
 
             appName: String,
+
+            size: {
+              type: String,
+              reflectToAttribute: true
+            },
 
             _appDetail: {
               type: Object,
