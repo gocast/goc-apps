@@ -70,32 +70,30 @@
 
       static get is() {return 'goc-apps-collection';}
 
-      static get config() {
+      static get properties() {
         return {
-          properties: {
 
-            appName: String,
+          appName: String,
 
-            item: {
-              type: Object,
-              notify: true,
-              computed: '_computeItem(appName)'
-            },
+          item: {
+            type: Object,
+            notify: true,
+            computed: '_computeItem(appName)'
+          },
 
-            apps: {
-              type: Array,
-              notify: true,
-              computed: '_computeApps(language)'
-            },
+          apps: {
+            type: Array,
+            notify: true,
+            computed: '_computeApps(language)'
+          },
 
-            language: {
-              type: String,
-              value: _ => {
-                return 'en';
-              }
+          language: {
+            type: String,
+            value: _ => {
+              return 'en';
             }
-
           }
+
         };
       }
 

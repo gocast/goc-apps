@@ -59,23 +59,21 @@
 
       static get is() {return 'goc-app-icon';}
 
-      static get config() {
+      static get properties() {
         return {
-          properties: {
 
-            appName: String,
+          appName: String,
 
-            size: {
-              type: String,
-              reflectToAttribute: true
-            },
+          size: {
+            type: String,
+            reflectToAttribute: true
+          },
 
-            _appDetail: {
-              type: Object,
-              observer: '_appDetailChanged'
-            }
-
+          _appDetail: {
+            type: Object,
+            observer: '_appDetailChanged'
           }
+
         };
       }
 
